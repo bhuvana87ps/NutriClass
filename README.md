@@ -1,4 +1,5 @@
-# 🍽️ NutriClass — End-to-End Machine Learning Pipeline for Food Nutrition Analysis
+# 🍽️ NutriClass: Food Classification Using Nutritional Data
+
 
 ## 📌 Project Overview
 
@@ -25,7 +26,7 @@ The project follows **industry-standard ML architecture**, separating **data pro
 ---
 
 ## 🗂️ Project Structure
-
+```bash
 NutriClass/
 │
 ├── data/
@@ -68,7 +69,7 @@ NutriClass/
 ├── README.md
 └── requirements.txt
 
-
+```
 ---
 
 ## 📘 Notebook Breakdown
