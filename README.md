@@ -15,6 +15,25 @@ The project follows **industry-standard ML architecture**, separating **data pro
 
 ---
 
+## 🧠 Skills Takeaway
+
+Through this project, the following technical skills were developed and demonstrated:
+
+- Data preprocessing and cleaning
+- Feature engineering for tabular nutrition data
+- Handling numerical, categorical, and boolean features
+- Dimensionality reduction using PCA
+- Unsupervised learning (KMeans, DBSCAN)
+- Supervised classification modeling
+- Handling class imbalance using stratified sampling
+- Model evaluation using accuracy, precision, recall, and F1-score
+- Cross-validation and hyperparameter tuning (GridSearchCV)
+- Machine learning inference
+- Model performance visualization using Power BI
+- Interactive ML inference using Streamlit
+
+---
+
 ## 🎯 Objectives
 
 - Transform raw nutrition data into model-compatible features  
