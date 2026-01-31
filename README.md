@@ -257,6 +257,11 @@ The application will open in your browser at:
 http://localhost:8501
 
 ```
+
+> ⚠️ **Note:** GitHub Actions CI may fail due to Streamlit UI execution in a headless environment.  
+> The application runs successfully in a local setup.
+
+
 🗂️ Project Structure
 ```bash
 NutriClass/
