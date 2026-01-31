@@ -1,54 +1,125 @@
+# --------------------------------------------------------------
+# NutriClass — Main Application Entry Point
+# --------------------------------------------------------------
+# PURPOSE:
+# - Defines project navigation flow
+# - Aligns pages with ML reasoning order
+# - Does NOT contain ML logic (exam best practice)
+#
+# DESIGN STORY:
+# Raw Data (Unsupervised Insights)
+# → Diet Recommendation (Unsupervised Logic)
+# → Food Classifier (Supervised Enforcement)
+# → Pipeline Overview (System Explanation)
+# --------------------------------------------------------------
+
 import streamlit as st
-import pandas as pd
-from utils import load_model
 
-st.set_page_config(page_title="NutriClass ML Inference", layout="wide")
+# --------------------------------------------------------------
+# PAGE CONFIG
+# --------------------------------------------------------------
+st.set_page_config(
+    page_title="NutriClass | Nutrition Intelligence Platform",
+    layout="wide"
+)
+# --------------------------------------------------------------
+# HIDE DEFAULT STREAMLIT PAGE LIST (SAFE)
+# --------------------------------------------------------------
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebarNav"] {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-model, preprocessor, label_encoder = load_model()
+# --------------------------------------------------------------
+# APP HEADER
+# --------------------------------------------------------------
+st.markdown("## 🍽️ **NutriClass — Nutrition Intelligence Platform**")
+st.caption(
+    "From data understanding → diet recommendation → strict food classification"
+)
 
-st.title("🍽️ NutriClass — Food Health Prediction")
+st.markdown("---")
 
-st.sidebar.header("Enter Nutrition Details")
+# --------------------------------------------------------------
+# PROJECT STORY (EXAM-CRITICAL)
+# --------------------------------------------------------------
+st.markdown(
+    """
+### 🔗 How This Project Is Structured
 
-# User Inputs
-Calories = st.sidebar.number_input("Calories", 0.0)
-Protein = st.sidebar.number_input("Protein", 0.0)
-Fat = st.sidebar.number_input("Fat", 0.0)
-Carbs = st.sidebar.number_input("Carbs", 0.0)
-Sugar = st.sidebar.number_input("Sugar", 0.0)
-Fiber = st.sidebar.number_input("Fiber", 0.0)
-Sodium = st.sidebar.number_input("Sodium", 0.0)
-Cholesterol = st.sidebar.number_input("Cholesterol", 0.0)
-Glycemic_Index = st.sidebar.number_input("Glycemic Index", 0.0)
-Water_Content = st.sidebar.number_input("Water Content", 0.0)
-Serving_Size = st.sidebar.number_input("Serving Size", 0.0)
+NutriClass follows a **progressive machine learning design**:
 
-Meal_Type = st.sidebar.selectbox("Meal Type", ["breakfast", "lunch", "dinner"])
-Preparation_Method = st.sidebar.selectbox("Preparation Method", ["fried", "boiled", "raw"])
-Is_Vegan = st.sidebar.checkbox("Is Vegan")
-Is_Gluten_Free = st.sidebar.checkbox("Is Gluten Free")
+1. **Raw Data Explorer**
+   - Uses **unsupervised learning**
+   - Discovers nutritional patterns and clusters
+   - Validates that foods are separable
 
-if st.sidebar.button("Predict"):
-    input_df = pd.DataFrame([{
-        "Calories": Calories,
-        "Protein": Protein,
-        "Fat": Fat,
-        "Carbs": Carbs,
-        "Sugar": Sugar,
-        "Fiber": Fiber,
-        "Sodium": Sodium,
-        "Cholesterol": Cholesterol,
-        "Glycemic_Index": Glycemic_Index,
-        "Water_Content": Water_Content,
-        "Serving_Size": Serving_Size,
-        "Meal_Type": Meal_Type,
-        "Preparation_Method": Preparation_Method,
-        "Is_Vegan": int(Is_Vegan),
-        "Is_Gluten_Free": int(Is_Gluten_Free)
-    }])
+2. **Diet Recommendation Engine**
+   - Uses **unsupervised logic**
+   - Groups and filters foods based on similarity
+   - Provides flexible meal planning
 
-    X_processed = preprocessor.transform(input_df)
-    prediction = model.predict(X_processed)
-    result = label_encoder.inverse_transform(prediction)
+3. **Food Classifier**
+   - Uses **supervised learning**
+   - Predicts **exact food name** for strict diet enforcement
+   - Enables real-time, controlled decision-making
 
-    st.success(f"🧠 Predicted Food Health: **{result[0]}**")
+4. **Pipeline Overview**
+   - Explains the full end-to-end ML system
+   - Justifies model and design choices
+
+👉 Navigate pages **top to bottom** to follow the reasoning.
+"""
+)
+
+st.markdown("---")
+
+# --------------------------------------------------------------
+# SIDEBAR NAVIGATION (ORDER MATTERS)
+# --------------------------------------------------------------
+st.sidebar.markdown("## 📂 NutriClass Modules")
+
+st.sidebar.page_link(
+    "pages/4_Raw_Data_Explorer.py",
+    label="🔍 Raw Data Explorer",
+    help="Unsupervised learning, clustering, PCA, silhouette"
+)
+
+st.sidebar.page_link(
+    "pages/2_Diet_Recommendation.py",
+    label="🥗 Diet Recommendation",
+    help="Unsupervised food grouping & meal planning"
+)
+
+st.sidebar.page_link(
+    "pages/1_Food_Classifier.py",
+    label="🎯 Food Classifier",
+    help="Supervised ML — exact food prediction"
+)
+
+st.sidebar.page_link(
+    "pages/3_Pipeline_Overview.py",
+    label="⚙️ Pipeline Overview",
+    help="End-to-end ML architecture explanation"
+)
+
+# --------------------------------------------------------------
+# LANDING MESSAGE
+# --------------------------------------------------------------
+st.info(
+    "⬅️ Use the sidebar to explore NutriClass modules in order.\n\n"
+    "This application is **read-only inference** and **exam-aligned by design**."
+)
+
+# --------------------------------------------------------------
+# FOOTER
+# --------------------------------------------------------------
+st.caption(
+    "NutriClass • Unsupervised → Supervised ML • Explainable Nutrition Intelligence"
+)
